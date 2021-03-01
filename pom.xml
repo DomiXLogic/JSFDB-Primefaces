@@ -40,7 +40,10 @@
             <artifactId>primefaces</artifactId>
             <version>8.0</version>
         </dependency>
+        
+
     </dependencies>
+    
     <build>
         <sourceDirectory>src</sourceDirectory>
         <resources>

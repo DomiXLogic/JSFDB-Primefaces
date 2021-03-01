@@ -78,7 +78,7 @@ body {
 	<div class="content">
 		<h2>Student Representation</h2>
 
-		<p:dataTable value="#{studentController.students}" var="tempStudent">
+                <p:dataTable value="#{studentController.students}" var="tempStudent" paginator="true" rows="6">
 
 			<p:column>
 				<f:facet name="header">First Name</f:facet>

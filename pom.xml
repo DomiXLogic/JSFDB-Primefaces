@@ -4,7 +4,7 @@
     <artifactId>student-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>student-JSF-project</name>
+    <name>student-project</name>
     <description>Some description here</description>
     <dependencies> 
         <dependency>

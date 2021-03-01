@@ -1,91 +1,122 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-  <f:event type="preRenderView" listener="#{studentController.loadStudents()}"/>
+	<f:event type="preRenderView"
+		listener="#{studentController.loadStudents()}" />
 </f:metadata>
 
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<title>Student Tracker App</title>
-	
-	<h:outputStylesheet library="css" name="style.css"  />
-	
-</h:head>
+	<title>Student Database</title>
+	<!-- 
+		<h:outputStylesheet library="css" name="style.css"  />
+	-->
 
+	<style>
+* {
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the top navigation bar */
+.topnav {
+	overflow: hidden;
+	background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+/* Style the content */
+.content {
+	background-color: #ddd;
+	padding: 10px;
+	height: 200px; /* Should be removed. Only for demonstration */
+}
+
+/* Style the footer */
+.footer {
+	background-color: #f1f1f1;
+	padding: 10px;
+}
+</style>
+</h:head>
 <h:body>
 
-	<div id="wrapper">
-		<div id="header">
-			<h2>Student Listing </h2>
-		</div>
+	<div class="topnav">
+	<p:messages globalOnly="true" />
+
+		<p:button outcome="add-student-form" value="Add student" />
+		<a href="#">Link</a> <a href="#">Link</a>
+
 	</div>
 
-	<div id="container">
+	<div class="content">
+		<h2>Student Representation</h2>
 
-		<div id="content">
-		
-			<h:messages globalOnly="true" />
-		
-			<h:button value="Add Student" styleClass="add-student-button" outcome="add-student-form"/>			
+		<p:dataTable value="#{studentController.students}" var="tempStudent">
 
-			<h:form>
-						
-			<h:dataTable value="#{studentController.students}" var="tempStudent"
-				styleClass="demo-table" 
-				headerClass="demo-table-header"
-				rowClasses="demo-table-odd-row,demo-table-even-row">
+			<p:column>
+				<f:facet name="header">First Name</f:facet>
+           		#{tempStudent.firstName}
+    
+        </p:column>
 
-				<h:column>
-					<!-- the column header -->
-					<f:facet name="header">First Name</f:facet>
+			<p:column>
+				<f:facet name="header">Last Name</f:facet>
+           		#{tempStudent.lastName}
+    
+        </p:column>
 
-					<!--  the value for each row -->
-					#{tempStudent.firstName}
-				</h:column>
+			<p:column>
+				<f:facet name="header">E mail</f:facet>
+           		#{tempStudent.email}
+    
+        </p:column>
 
-				<h:column>
-					<!-- the column header -->
-					<f:facet name="header">Last Name</f:facet>
+			<p:column>
+				<!-- the column header -->
+				<f:facet name="header">Action</f:facet>
 
-					<!--  the value for each row -->
-					#{tempStudent.lastName}
-				</h:column>
-
-				<h:column>
-					<!-- the column header -->
-					<f:facet name="header">Email</f:facet>
-
-					<!--  the value for each row -->
-					#{tempStudent.email}
-				</h:column>
-
-				<h:column>
-					<!-- the column header -->
-					<f:facet name="header">Action</f:facet>
-
-					<!--  the value for each row -->
-					<h:commandLink value="Update"
-						action="#{studentController.loadStudent(tempStudent.id)}"/>
+				<!--  the value for each row -->
+				<p:commandLink value="Update"
+					action="#{studentController.loadStudent(tempStudent.id)}" />
 					|
 
-					<h:commandLink value="Delete"
-						onclick="if (!confirm('Are you sure you want to delete this student?')) return false"
-						action="#{studentController.deleteStudent(tempStudent.id)}"/>
-					
-				</h:column>
+					<p:commandLink value="Delete"
+					onclick="if (!confirm('Are you sure you want to delete this student?')) return false"
+					action="#{studentController.deleteStudent(tempStudent.id)}" />
 
-			</h:dataTable>
+			</p:column>
 
-			</h:form>
-
-		</div>
-		
+		</p:dataTable>
 	</div>
+
+	<div class="footer">Footer</div>
 
 </h:body>
 </html>

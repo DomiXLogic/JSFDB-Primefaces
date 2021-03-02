@@ -18,18 +18,18 @@ public class StudentController {
 
 	private List<Student> students;
 	private StudentDbUtil studentDbUtil;
-	private Logger logger = Logger.getLogger(getClass().getName());
+        private Logger logger = Logger.getLogger(getClass().getName());
 	
 	public StudentController() throws Exception {
 		students = new ArrayList<>();
-		
+                
 		studentDbUtil = StudentDbUtil.getInstance();
 	}
 	
 	public List<Student> getStudents() {
 		return students;
 	}
-
+        
 	public void loadStudents() {
 
 		logger.info("Loading students");
@@ -49,7 +49,7 @@ public class StudentController {
 			addErrorMessage(exc);
 		}
 	}
-		
+        
 	public String addStudent(Student theStudent) {
 
 		logger.info("Adding student: " + theStudent);

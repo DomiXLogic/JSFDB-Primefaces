@@ -5,8 +5,8 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-	<f:event type="preRenderView" listener="#{studentController.loadStudents()}"/>
-        <f:event type="preRenderView" listener="#{teacherController.loadTeachers()}"/>
+	<f:event type="preRenderView"
+		listener="#{studentController.loadStudents()}"/>
 </f:metadata>
 
 <h:head>
@@ -72,8 +72,7 @@ body {
 	<p:messages globalOnly="true" />
 
         <p:button outcome="add-student-form" value="Add student"  />
-	<p:button outcome="add-teacher-form" value="Add teacher"  />
-        <p:button onclick="window.alert('Under Contruction...');" value="Add Course"  />
+		<a href="#">Link</a> <a href="#">Link</a>
 
 	</div>
 
